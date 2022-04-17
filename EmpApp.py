@@ -31,9 +31,9 @@ table = 'employee';
 def home():
     return render_template('AddEmp.html')
 
-@app.route("/about", methods=['POST'])
+@app.route("/about", methods=['GET'])
 def about():
-    return render_template('www.intellipaat.com');
+    return render_template('aboutus.html');
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
     emp_id = request.form['emp_id']
@@ -81,7 +81,7 @@ def AddEmp():
         
             
             try:
-                dynamodb_client = boto3.client('dynamodb', region_name='us-east-2')
+                dynamodb_client = boto3.client('dynamodb', region_name='us-east-1')
                 dynamodb_client.put_item(
                  TableName='employee_image_table',
                     Item={
@@ -117,7 +117,7 @@ def FetchData():
     emp_id = request.form['emp_id']
 
     output = {}
-    select_sql = "SELECT emp_id, first_name, last_name, pri_skill, location from employee where emp_id=%s"
+    select_sql = "SELECT emp_id, first_name, last_name, primary_skills, location from employee where emp_id=%s"
     cursor = db_conn.cursor()
 
     try:
@@ -131,31 +131,29 @@ def FetchData():
         output["primary_skills"] = result[3]
         output["location"] = result[4]
         print(output["emp_id"])
-        dynamodb_client = boto3.client('dynamodb', region_name=customregion)
+        dynamodb_client = boto3.client('dynamodb', region_name=us-east-1)
         try:
             response = dynamodb_client.get_item(
                 TableName='employee_image_table',
-                Key={
+                 Key={
                     'empid': {
                         'N': str(emp_id)
                     }
                 }
             )
-            image_url = response['Item']['image_url']['S']
-
+            
         except Exception as e:
             program_msg = "Flask could not update DynamoDB table with S3 object URL"
             return render_template('addemperror.html', errmsg1=program_msg, errmsg2=e)
 
     except Exception as e:
-        print(e)
+        print("emp_id  not found")
 
     finally:
         cursor.close()
 
     return render_template("GetEmpOutput.html", id=output["emp_id"], fname=output["first_name"],
-                           lname=output["last_name"], interest=output["primary_skills"], location=output["location"],
-                           image_url=image_url)
+                           lname=output["last_name"], interest=output["primary_skills"], location=output["location"])
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=80,debug=True)

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+</style>
+</head>
+<body>
+<h2> AWS GROUP5 WEBSITE HOSTING TEAM</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="https://s3.amazonaws.com/aboutus.html/Jahnavi.jpeg" alt="Jahnavi" style="width:37%">
+      <div class="container">
+        <h2>Jahnavi Danda</h2>
+        <p class="title">Student id: 700674089</p>
+        <p>JXD40890@ucmo.edu</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+<div class="column">
+    <div class="card">
+      <img src="https://s3.amazonaws.com/aboutus.html/Aamani.jpeg" alt="Aamani" style="width:40%">
+      <div class="container">
+        <h2>Aamani Kodali</h2>
+        <p class="title">Student id:700723855 </p>
+        <p>AXK38550@UCMO.edu</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="https://s3.amazonaws.com/aboutus.html/Vignetha.jpeg" alt="vignetha" style="width:52%">
+      <div class="container">
+        <h2>Vignetha Cherukuru</h2>
+        <p class="title">Student id:700725311 </p>
+        <p>VXC53110@UCMO.edu</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="column">
+    <div class="card">
+      <img src="https://s3.amazonaws.com/aboutus.html/Snehith.jpeg" alt="snehith" style="width:40%">
+      <div class="container">
+        <h2>Snehith Chiluka</h2>
+        <p class="title">Student id:700725370</p>
+        <p>Sxc54700@UCMO.edu</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+</html>
+
+  
+
