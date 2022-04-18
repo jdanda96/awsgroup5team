@@ -1,0 +1,19 @@
+---
+- hosts: ansible
+
+  tasks:
+
+  - name: Stop container
+    command: docker stop emp-app
+    ignore_errors: yes
+
+  - name: remove the container
+    command: docker rm emp-app
+    ignore_errors: yes
+
+  - name: remove images
+    command: docker rmi public.ecr.aws/k0n3h6e5/awsgroup5team:latest
+    ignore_errors: yes
+
+  - name: create container
+    command: docker run -itd --name emp-app -p 8080:80 public.ecr.aws/k0n3h6e5/awsgroup5team:latest
